@@ -23,10 +23,7 @@ execute:
 **Session Duration:** 60 Minutes
 
 - **00:00 – 00:15** | **Introduction to STATS19 & `{stats19}`**
-  - Canonical UK road crash dataset architecture (3 tables).
-  - Package overview & rapid data download tour.
 - **00:15 – 00:30** | **Research & Methodological Challenges**
-  - Denominator neglect, aggregation scale, and inference pitfalls.
 - **00:30 – 01:00** | **Interactive Breakout Groups**
   - **Group 1 (Robin)**: Hands-on code & vignette walkthrough (Laptops out!).
   - **Group 2 (Roger)**: Research design & analysis ideas discussion.
@@ -170,7 +167,7 @@ A complementary tool for exploring road safety data at high spatial resolution:
 
 ## Breakout Group 1: Technical & Hands-On Code
 
-**Led by:** Robin (w/ Reka, Sam Langton)
+**Led by:** Robin
 
 - **Laptops Open!**
 - Walkthrough of core `{stats19}` vignettes and spatial analysis workflows.
@@ -204,5 +201,6 @@ A complementary tool for exploring road safety data at high spatial resolution:
 - **Source Code Repository:** [github.com/Robinlovelace/carscrime](https://github.com/Robinlovelace/carscrime)
 - **Documentation & Package Website:** [docs.ropensci.org/stats19/](https://docs.ropensci.org/stats19/)
 - **GitHub Repository:** [github.com/ropensci/stats19](https://github.com/ropensci/stats19)
+- **Roger's slides**: [rogerbeecham.com](https://www.roger-beecham.com/slides/cars_crime) and code [github.com/rogerbeecham/slides](https://github.com/rogerbeecham/slides)
 
 Thank you for participating!
