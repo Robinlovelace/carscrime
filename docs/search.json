@@ -103,5 +103,40 @@
     "title": "Cars and Crime Symposium Workshop",
     "section": "Overview",
     "text": "Overview\nThis repository contains reproducible slides and materials for the Cars and Crime Symposium Workshop on accessing and analyzing UK road safety data using the {stats19} R package.\n\nWorkshop Agenda (60 Mins)\n\n00:00 – 00:15: Introduction to STATS19 & {stats19} R package (3 core tables architecture).\n00:15 – 00:30: Research Topics & Methodological Challenges (TBC).\n00:30 – 01:00: Breakout Workshop Groups:\n\nGroup 1 (Robin): Hands-on code & vignette walkthrough.\nGroup 2 (Roger): Research design & analysis plans.\nGroup 3: Informal walk & networking.\n\n\n\n\nGetting Started\nYou can launch an interactive R development environment directly in your browser:\n\n\n\nOpen in GitHub Codespaces"
+  },
+  {
+    "objectID": "slides.html#the-importance-of-geographic-aggregation",
+    "href": "slides.html#the-importance-of-geographic-aggregation",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "The importance of geographic aggregation",
+    "text": "The importance of geographic aggregation\nOptions:"
+  },
+  {
+    "objectID": "slides.html#defining-junctions",
+    "href": "slides.html#defining-junctions",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "Defining junctions",
+    "text": "Defining junctions"
+  },
+  {
+    "objectID": "slides.html#segments",
+    "href": "slides.html#segments",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "Segments",
+    "text": "Segments"
+  },
+  {
+    "objectID": "slides.html#in-the-future",
+    "href": "slides.html#in-the-future",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "In the future",
+    "text": "In the future"
+  },
+  {
+    "objectID": "slides.html#live-demo",
+    "href": "slides.html#live-demo",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "Live demo!",
+    "text": "Live demo!"
   }
 ]
