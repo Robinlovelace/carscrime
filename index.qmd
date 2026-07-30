@@ -11,4 +11,38 @@ Welcome to the **Cars and Crime Symposium Workshop** repository!
 
 ![Deploy status](https://img.shields.io/github/actions/workflow/status/Robinlovelace/carscrime/publish.yml?branch=main&label=deploy) Last updated: {{< meta date >}}
 
+## Casualties over time
+
+```{r}
+library(stats19)
+library(tidyverse)
+```
+
+
+```{r}
+casualties = get_stats19(year = 1979, type = "cas")
+names(casualties)
+# simplify casualty_type values:
+casualties = casualties |>
+  mutate(type = case_when(
+    str_detect(casualty_type, "Cyclist") ~ "Cyclist",
+    str_detect(casualty_type, "Pedestrian") ~ "Pedestrian",
+    str_detect(casualty_type, "Car") ~ "Car",
+    # Other:
+    TRUE ~ "Other"
+  ))
+casualties_per_year_type = casualties |>
+  group_by(collision_year, type) |>
+  summarise(n = n(), .groups = "drop")
+
+```
+
+```{r}
+# Plot casualties over time
+ggplot() +
+  geom_line(data = casualties_per_year_type, aes(x = collision_year, y = n, color = type)) +
+  labs(x = "Year", y = "Number of casualties", color = "Type") +
+  theme_minimal()
+```
+
 {{< include _readme-body.md >}}
