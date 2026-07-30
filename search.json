@@ -42,6 +42,41 @@
     "text": "Tools in Action: criticalissues\nA complementary tool for exploring road safety data at high spatial resolution:\n\ncriticalissues.netlify.app — WYCA region with signal layer\nCritical Issues (criticalissues.netlify.app) combines STATS19 crash data with network infrastructure.\nExplore how spatial layers (signals, crossings, widths) relate to casualty clusters."
   },
   {
+    "objectID": "slides.html#the-importance-of-geographic-aggregation",
+    "href": "slides.html#the-importance-of-geographic-aggregation",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "The importance of geographic aggregation",
+    "text": "The importance of geographic aggregation\nOptions:"
+  },
+  {
+    "objectID": "slides.html#defining-junctions",
+    "href": "slides.html#defining-junctions",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "Defining junctions",
+    "text": "Defining junctions"
+  },
+  {
+    "objectID": "slides.html#segments",
+    "href": "slides.html#segments",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "Segments",
+    "text": "Segments"
+  },
+  {
+    "objectID": "slides.html#in-the-future",
+    "href": "slides.html#in-the-future",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "In the future",
+    "text": "In the future"
+  },
+  {
+    "objectID": "slides.html#live-demo",
+    "href": "slides.html#live-demo",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "Live demo!",
+    "text": "Live demo!"
+  },
+  {
     "objectID": "slides.html#breakout-group-1-technical-hands-on-code",
     "href": "slides.html#breakout-group-1-technical-hands-on-code",
     "title": "Accessing and Analyzing UK Road Crash Data with stats19",
