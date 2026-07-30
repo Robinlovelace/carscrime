@@ -4,35 +4,42 @@
     "href": "slides.html#workshop-overview-agenda",
     "title": "Accessing and Analyzing UK Road Crash Data with stats19",
     "section": "Workshop Overview & Agenda",
-    "text": "Workshop Overview & Agenda\nSession Duration: 60 Minutes\n\n00:00 – 00:15 | Introduction to STATS19 & {stats19}\n\nCanonical UK road crash dataset architecture (3 tables).\nPackage overview & rapid data download tour.\n\n00:15 – 00:30 | Research & Methodological Challenges (TBC)\n\nContent To Be Confirmed (TBC).\n\n00:30 – 01:00 | Interactive Breakout Groups\n\nGroup 1 (Robin): Hands-on code & vignette walkthrough (Laptops out!).\nGroup 2 (Roger): Research design & analysis ideas discussion.\nGroup 3: Informal break / walk & networking."
+    "text": "Workshop Overview & Agenda\nSession Duration: 60 Minutes\n\n00:00 – 00:15 | Introduction to STATS19 & {stats19}\n\nCanonical UK road crash dataset architecture (3 tables).\nPackage overview & rapid data download tour.\n\n00:15 – 00:30 | Research & Methodological Challenges\n\nDenominator neglect, aggregation scale, and inference pitfalls.\n\n00:30 – 01:00 | Interactive Breakout Groups\n\nGroup 1 (Robin): Hands-on code & vignette walkthrough (Laptops out!).\nGroup 2 (Roger): Research design & analysis ideas discussion.\nGroup 3: Informal break / walk & networking."
   },
   {
     "objectID": "slides.html#what-is-stats19-data",
     "href": "slides.html#what-is-stats19-data",
     "title": "Accessing and Analyzing UK Road Crash Data with stats19",
     "section": "What is STATS19 Data?",
-    "text": "What is STATS19 Data?\n\nThe canonical record of road traffic collisions resulting in personal injury reported to police forces in Great Britain.\nHigh analytical potential for:\n\nTransport planning & active travel safety.\nCriminology & road traffic offense interactions.\nSpatial-temporal pattern analysis.\n\n\n\n\n\n\n\n\nRelational Data Structure\n\n\nSTATS19 consists of 3 interlinked tables linked by accident_index / collision_index: 1. Accidents / Crashes: Spatial location, timing, severity, weather, road conditions. 2. Casualties: Individual outcome, age, sex, mode of travel, severity. 3. Vehicles: Vehicle type, maneuvering, driver demographics."
+    "text": "What is STATS19 Data?"
   },
   {
-    "objectID": "slides.html#why-the-stats19-r-package",
-    "href": "slides.html#why-the-stats19-r-package",
+    "objectID": "slides.html#relational-data-architecture",
+    "href": "slides.html#relational-data-architecture",
     "title": "Accessing and Analyzing UK Road Crash Data with stats19",
-    "section": "Why the {stats19} R Package?",
-    "text": "Why the {stats19} R Package?\nHistorical Challenges:\n\nMessy annual zip files with changing column names and codings.\nManual downloading, unzipping, cleaning, and linking across years.\n\n{stats19} Solutions:\n\nOne-line functions to download, clean, and format data.\nStandardized schemas across historical data releases.\nNative sf integration for spatial analysis.\n\nlibrary(stats19)\nlibrary(sf)\nlibrary(dplyr)"
+    "section": "Relational Data Architecture",
+    "text": "Relational Data Architecture\n\n\nThree linked tables: Accidents/Collisions, Casualties, and Vehicles. Provides a wide set of possibilities for spatial and transport safety analysis."
+  },
+  {
+    "objectID": "slides.html#the-stats19-r-package",
+    "href": "slides.html#the-stats19-r-package",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "The {stats19} R Package",
+    "text": "The {stats19} R Package\n\n\nHistorically: messy annual zip files with changing column names and codings. {stats19} solution: one-line functions to download, clean, and format data."
   },
   {
     "objectID": "slides.html#rapid-data-retrieval",
     "href": "slides.html#rapid-data-retrieval",
     "title": "Accessing and Analyzing UK Road Crash Data with stats19",
     "section": "Rapid Data Retrieval",
-    "text": "Rapid Data Retrieval\n# Download crash data for a specific year\ncrashes_2022 &lt;- get_stats19(year = 2022, type = \"crash\")\n\n# Format into spatial sf object\ncrashes_sf &lt;- format_sf(crashes_2022)\n\n# Download casualties and vehicles linked to crashes\ncasualties_2022 &lt;- get_stats19(year = 2022, type = \"casualty\")\nvehicles_2022   &lt;- get_stats19(year = 2022, type = \"vehicle\")"
+    "text": "Rapid Data Retrieval\n\nlibrary(stats19)\nlibrary(sf)\nlibrary(dplyr)\n\n# Download crash data for a specific year\ncrashes_2022 &lt;- get_stats19(year = 2022, type = \"crash\")\n\n# Format into spatial sf object\ncrashes_sf &lt;- format_sf(crashes_2022)\n\n# Download casualties and vehicles linked to crashes\ncasualty_2022 &lt;- get_stats19(year = 2022, type = \"casualty\")\nvehicle_2022  &lt;- get_stats19(year = 2022, type = \"vehicle\")"
   },
   {
-    "objectID": "slides.html#part-2-tools-in-action-criticalissues",
-    "href": "slides.html#part-2-tools-in-action-criticalissues",
+    "objectID": "slides.html#tools-in-action-criticalissues",
+    "href": "slides.html#tools-in-action-criticalissues",
     "title": "Accessing and Analyzing UK Road Crash Data with stats19",
-    "section": "Part 2: Tools in Action — criticalissues",
-    "text": "Part 2: Tools in Action — criticalissues\nA complementary tool for exploring road safety data at high spatial resolution:\n\ncriticalissues.netlify.app — WYCA region with SA01 (signal) layer\nCritical Issues (criticalissues.netlify.app) combines STATS19 crash data with network infrastructure to identify locations needing intervention.\nExplore how spatial layers (signals, crossings, widths) relate to casualty clusters.\nDiscuss where the STATS19 classification matched your intuition."
+    "section": "Tools in Action: criticalissues",
+    "text": "Tools in Action: criticalissues\nA complementary tool for exploring road safety data at high spatial resolution:\n\ncriticalissues.netlify.app — WYCA region with signal layer\nCritical Issues (criticalissues.netlify.app) combines STATS19 crash data with network infrastructure.\nExplore how spatial layers (signals, crossings, widths) relate to casualty clusters."
   },
   {
     "objectID": "slides.html#breakout-group-1-technical-hands-on-code",
@@ -60,7 +67,7 @@
     "href": "slides.html#resources-links",
     "title": "Accessing and Analyzing UK Road Crash Data with stats19",
     "section": "Resources & Links",
-    "text": "Resources & Links\n\nCars and Crime Repository: github.com/Robinlovelace/carscrime\nDocumentation & Package Website: docs.ropensci.org/stats19/\nGitHub Repository: github.com/ropensci/stats19\n\nThank you for participating!"
+    "text": "Resources & Links\n\nCars and Crime Workshop Site: robinlovelace.github.io/carscrime\nSource Code Repository: github.com/Robinlovelace/carscrime\nDocumentation & Package Website: docs.ropensci.org/stats19/\nGitHub Repository: github.com/ropensci/stats19\n\nThank you for participating!"
   },
   {
     "objectID": "index.html",
