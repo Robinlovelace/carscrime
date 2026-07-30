@@ -14,52 +14,102 @@ Welcome to the **Cars and Crime Symposium Workshop** repository!
 ## Casualties over time
 
 ```{r}
+#| cache: true
 library(stats19)
 library(tidyverse)
-```
-
-
-```{r}
-casualties = get_stats19(year = 1979, type = "cas")
-names(casualties)
-# simplify casualty_type values:
-casualties = casualties |>
-  mutate(type = case_when(
-    str_detect(casualty_type, "Cyclist") ~ "Cyclist",
-    str_detect(casualty_type, "Pedestrian") ~ "Pedestrian",
-    str_detect(casualty_type, "Car") ~ "Car",
-    # Other:
-    TRUE ~ "Other"
-  ))
-casualties_per_year_type = casualties |>
-  group_by(collision_year, type) |>
-  summarise(n = n(), .groups = "drop")
-
+library(readr)
 ```
 
 ```{r}
-# Plot casualties over time
-ggplot() +
-  geom_line(data = casualties_per_year_type, aes(x = collision_year, y = n, color = type)) +
+#| cache: true
+# Read pre-aggregated casualty data (built from raw STATS19 by build-data.R)
+casualties_by_year_type <- read_csv("data/casualties_by_year_type.csv",
+                                    show_col_types = FALSE)
+```
+
+```{r}
+# Absolute casualties over time
+ggplot(casualties_by_year_type, aes(x = collision_year, y = n, color = type)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 2) +
   labs(x = "Year", y = "Number of casualties", color = "Type") +
   theme_minimal()
 ```
 
-Same plot starting with index of 100 starting in 1979:
-
 ```{r}
-collisions_1979 = casualties_per_year_type |>
+# Indexed plot (1979 = 100)
+collisions_1979 <- casualties_by_year_type |>
   filter(collision_year == 1979) |>
   select(type, n) |>
   rename(n_1979 = n)
-casualties_per_year_type_indexed = casualties_per_year_type |>
-  left_join(collisions_1979, by = "type") |>
-  mutate(n_indexed = n / n_1979 * 100,
-         collision_year_indexed = collision_year - 1979 + 1)
 
-ggplot() +
-  geom_line(data = casualties_per_year_type_indexed, aes(x = collision_year_indexed, y = n_indexed, color = type)) +
-  labs(x = "Year (indexed from 100 in 1979)", y = "Number of casualties (indexed)", color = "Type") +
+casualties_by_year_type |>
+  left_join(collisions_1979, by = "type") |>
+  mutate(n_indexed = n / n_1979 * 100) |>
+  ggplot(aes(x = collision_year, y = n_indexed, color = type)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 2) +
+  labs(x = "Year", y = "Casualties indexed (1979 = 100)", color = "Type") +
+  theme_minimal()
+```
+
+## Car harms: How has the burden shifted?
+
+The three plots below illustrate how "car harms" have evolved differently for people **driving**, **walking**, and **cycling**.
+
+### Car occupant casualties — safety technology at work
+
+Car occupant casualties have fallen dramatically since 1979, driven by seatbelt laws, airbags, crumple zones, and improved vehicle design.
+
+```{r}
+casualties_by_year_type |>
+  filter(type == "Car occupant") |>
+  ggplot(aes(x = collision_year, y = n)) +
+  geom_line(color = "#1F78B4", linewidth = 1.2) +
+  geom_point(color = "#1F78B4", size = 2) +
+  labs(x = "Year", y = "Car occupant casualties",
+       subtitle = "Dramatic decline as vehicle safety improves") +
+  theme_minimal()
+```
+
+### Pedestrian casualties — harm to people walking
+
+While car occupants have become dramatically safer, pedestrian casualties have also declined — but not nearly as steeply, and from a much higher baseline per trip.
+
+```{r}
+casualties_by_year_type |>
+  filter(type == "Pedestrian") |>
+  ggplot(aes(x = collision_year, y = n)) +
+  geom_line(color = "#E7298A", linewidth = 1.2) +
+  geom_point(color = "#E7298A", size = 2) +
+  labs(x = "Year", y = "Pedestrian casualties",
+       subtitle = "Slower progress for people outside cars") +
+  theme_minimal()
+```
+
+### Risk shift: vulnerable road user casualties per car occupant
+
+This ratio tells the story: for every car occupant casualty, how many pedestrians and cyclists are hurt? A rising ratio means the **burden of risk has shifted** from people *inside* cars to people *outside* them.
+
+```{r}
+ratio_data <- casualties_by_year_type |>
+  filter(type %in% c("Car occupant", "Pedestrian", "Cyclist")) |>
+  pivot_wider(names_from = type, values_from = n) |>
+  mutate(
+    ped_per_car = Pedestrian / `Car occupant`,
+    cycle_per_car = Cyclist / `Car occupant`
+  )
+
+ggplot(ratio_data, aes(x = collision_year)) +
+  geom_line(aes(y = ped_per_car, color = "Pedestrians per car occupant"), linewidth = 1.2) +
+  geom_point(aes(y = ped_per_car, color = "Pedestrians per car occupant"), size = 2) +
+  geom_line(aes(y = cycle_per_car, color = "Cyclists per car occupant"), linewidth = 1.2) +
+  geom_point(aes(y = cycle_per_car, color = "Cyclists per car occupant"), size = 2) +
+  scale_color_manual(values = c("Pedestrians per car occupant" = "#E7298A",
+                                 "Cyclists per car occupant" = "#66A61E")) +
+  labs(x = "Year", y = "Casualty ratio",
+       color = NULL,
+       subtitle = "Risk burden has shifted from car occupants to vulnerable road users") +
   theme_minimal()
 ```
 

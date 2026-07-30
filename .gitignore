@@ -1,6 +1,11 @@
-/.quarto/
-/_freeze/
-_site/
-docs/
-**/*.quarto_ipynb
-/mathjax-config.js
+# Ignore raw STATS19 CSVs (large, downloaded separately)
+data/dft-road-casualty-statistics-*.csv
+
+# Ignore per-session R temp files
+Rplots.pdf
+.Rhistory
+.RData
+
+# Ignore Quarto render cache
+index_cache/
+index_files/

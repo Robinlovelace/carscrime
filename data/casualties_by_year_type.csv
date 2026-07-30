@@ -1,0 +1,37 @@
+collision_year,type,n
+1979,Car occupant,147882
+1979,Cyclist,23645
+1979,Other,96272
+1979,Pedestrian,66714
+1984,Car occupant,141945
+1984,Cyclist,30939
+1984,Other,87956
+1984,Pedestrian,63474
+1989,Car occupant,182346
+1989,Cyclist,28513
+1989,Other,70653
+1989,Pedestrian,60080
+1994,Car occupant,193003
+1994,Cyclist,24839
+1994,Other,48822
+1994,Pedestrian,48695
+1999,Car occupant,201313
+1999,Cyclist,22840
+1999,Other,53269
+1999,Pedestrian,42888
+2004,Car occupant,180536
+2004,Cyclist,16648
+2004,Other,48775
+2004,Pedestrian,34881
+2009,Car occupant,142683
+2009,Cyclist,17064
+2009,Other,35512
+2009,Pedestrian,26887
+2014,Car occupant,115071
+2014,Cyclist,21287
+2014,Other,33371
+2014,Pedestrian,24748
+2019,Car occupant,89032
+2019,Cyclist,16883
+2019,Other,25473
+2019,Pedestrian,21770

@@ -64,7 +64,7 @@ jobs:
           if [ -f renv.lock ]; then
             Rscript -e 'renv::restore()'
           else
-            Rscript -e 'install.packages(c("sf", "tidyverse"), repos = "https://cran.rstudio.com/")'
+            Rscript -e 'install.packages(c("sf", "tidyverse", "stats19"), repos = "https://cran.rstudio.com/")'
           fi
 
       - name: Set up Python
