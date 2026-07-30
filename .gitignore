@@ -1,0 +1,6 @@
+/.quarto/
+/_freeze/
+_site/
+docs/
+**/*.quarto_ipynb
+/mathjax-config.js
