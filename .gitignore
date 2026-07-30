@@ -9,3 +9,6 @@ Rplots.pdf
 # Ignore Quarto render cache
 index_cache/
 index_files/
+
+/.quarto/
+**/*.quarto_ipynb

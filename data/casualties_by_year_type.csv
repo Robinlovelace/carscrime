@@ -1,37 +1,189 @@
 collision_year,type,n
-1979,Car occupant,147882
+1979,Car occupant,149511
 1979,Cyclist,23645
-1979,Other,96272
+1979,Other,94643
 1979,Pedestrian,66714
-1984,Car occupant,141945
+1980,Car occupant,143517
+1980,Cyclist,24788
+1980,Other,95128
+1980,Pedestrian,63299
+1981,Car occupant,146317
+1981,Cyclist,25306
+1981,Other,92467
+1981,Pedestrian,60750
+1982,Car occupant,149904
+1982,Cyclist,28138
+1982,Other,94867
+1982,Pedestrian,61422
+1983,Car occupant,130425
+1983,Cyclist,30576
+1983,Other,85909
+1983,Pedestrian,61674
+1984,Car occupant,143624
 1984,Cyclist,30939
-1984,Other,87956
+1984,Other,86277
 1984,Pedestrian,63474
-1989,Car occupant,182346
+1985,Car occupant,149452
+1985,Cyclist,26998
+1985,Other,79684
+1985,Pedestrian,61390
+1986,Car occupant,159206
+1986,Cyclist,26130
+1986,Other,75276
+1986,Pedestrian,60877
+1987,Car occupant,159468
+1987,Cyclist,26194
+1987,Other,68358
+1987,Pedestrian,57453
+1988,Car occupant,170705
+1988,Cyclist,25849
+1988,Other,66908
+1988,Pedestrian,58843
+1989,Car occupant,184688
 1989,Cyclist,28513
-1989,Other,70653
+1989,Other,68311
 1989,Pedestrian,60080
-1994,Car occupant,193003
+1990,Car occupant,190558
+1990,Cyclist,26422
+1990,Other,63931
+1990,Pedestrian,60230
+1991,Car occupant,179384
+1991,Cyclist,24817
+1991,Other,53137
+1991,Pedestrian,54030
+1992,Car occupant,185662
+1992,Cyclist,24769
+1992,Other,48710
+1992,Pedestrian,51612
+1993,Car occupant,187479
+1993,Cyclist,24087
+1993,Other,46441
+1993,Pedestrian,48128
+1994,Car occupant,195154
 1994,Cyclist,24839
-1994,Other,48822
+1994,Other,46671
 1994,Pedestrian,48695
-1999,Car occupant,201313
+1995,Car occupant,194027
+1995,Cyclist,24945
+1995,Other,44632
+1995,Pedestrian,47083
+1996,Car occupant,205336
+1996,Cyclist,24584
+1996,Other,44208
+1996,Pedestrian,46450
+1997,Car occupant,211448
+1997,Cyclist,24636
+1997,Other,46118
+1997,Pedestrian,45601
+1998,Car occupant,210474
+1998,Cyclist,22923
+1998,Other,46929
+1998,Pedestrian,44886
+1999,Car occupant,204162
 1999,Cyclist,22840
-1999,Other,53269
+1999,Other,50420
 1999,Pedestrian,42888
-2004,Car occupant,180536
+2000,Car occupant,205527
+2000,Cyclist,20612
+2000,Other,52111
+2000,Pedestrian,42033
+2001,Car occupant,201474
+2001,Cyclist,19114
+2001,Other,52144
+2001,Pedestrian,40577
+2002,Car occupant,196227
+2002,Cyclist,17107
+2002,Other,50487
+2002,Pedestrian,38784
+2003,Car occupant,187242
+2003,Cyclist,17033
+2003,Other,49927
+2003,Pedestrian,36405
+2004,Car occupant,182857
 2004,Cyclist,16648
-2004,Other,48775
+2004,Other,46454
 2004,Pedestrian,34881
+2005,Car occupant,177157
+2005,Cyclist,16561
+2005,Other,44018
+2005,Pedestrian,33281
+2006,Car occupant,170084
+2006,Cyclist,16196
+2006,Other,41142
+2006,Pedestrian,30982
+2007,Car occupant,160569
+2007,Cyclist,16195
+2007,Other,40825
+2007,Pedestrian,30191
+2008,Car occupant,148306
+2008,Cyclist,16297
+2008,Other,37820
+2008,Pedestrian,28482
 2009,Car occupant,142683
 2009,Cyclist,17064
 2009,Other,35512
 2009,Pedestrian,26887
+2010,Car occupant,132623
+2010,Cyclist,17185
+2010,Other,32995
+2010,Pedestrian,25845
+2011,Car occupant,124264
+2011,Cyclist,19215
+2011,Other,34273
+2011,Pedestrian,26198
+2012,Car occupant,118991
+2012,Cyclist,19091
+2012,Other,32423
+2012,Pedestrian,25218
+2013,Car occupant,109315
+2013,Cyclist,19438
+2013,Other,30884
+2013,Pedestrian,24033
 2014,Car occupant,115071
 2014,Cyclist,21287
 2014,Other,33371
 2014,Pedestrian,24748
+2015,Car occupant,111218
+2015,Cyclist,18844
+2015,Other,32066
+2015,Pedestrian,24061
+2016,Car occupant,108670
+2016,Cyclist,18477
+2016,Other,30687
+2016,Pedestrian,23550
+2017,Car occupant,99743
+2017,Cyclist,18321
+2017,Other,29124
+2017,Pedestrian,23805
+2018,Car occupant,93694
+2018,Cyclist,17550
+2018,Other,26921
+2018,Pedestrian,22432
 2019,Car occupant,89032
 2019,Cyclist,16883
 2019,Other,25473
 2019,Pedestrian,21770
+2020,Car occupant,64117
+2020,Cyclist,16294
+2020,Other,20423
+2020,Pedestrian,14750
+2021,Car occupant,70594
+2021,Cyclist,16458
+2021,Other,24503
+2021,Pedestrian,16654
+2022,Car occupant,74186
+2022,Cyclist,15693
+2022,Other,26274
+2022,Pedestrian,19327
+2023,Car occupant,72675
+2023,Cyclist,14999
+2023,Other,26040
+2023,Pedestrian,19263
+2024,Car occupant,69868
+2024,Cyclist,14549
+2024,Other,24679
+2024,Pedestrian,19176
+2025,Car occupant,67520
+2025,Cyclist,16042
+2025,Other,24343
+2025,Pedestrian,19978

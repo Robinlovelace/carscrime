@@ -1,44 +1,76 @@
-# Build pre-aggregated casualty data from raw STATS19 CSV
-# This avoids re-reading the 921 MB file on every render or in CI.
-# Output: data/casualties_by_year_type.csv (small, ~200 bytes)
+# Script to download STATS19 1979-latest datasets and build aggregated data CSVs
 
-library(tidyverse)
-library(readr)
 library(stats19)
+library(tidyverse)
 
-years <- seq(1979, 2022, by = 5)
-src <- "data/dft-road-casualty-statistics-casualty-1979-latest-published-year.csv"
+dir.create("data", showWarnings = FALSE)
 
-if (!file.exists(src)) {
-  stop("Raw STATS19 CSV not found at ", src,
-       "\nDownload it with: get_stats19(year = 1979, type = \"cas\", data_dir = \"data\")")
-}
+cat("Downloading STATS19 casualty and vehicle tables...\n")
+cas <- get_stats19(year = 1979, type = "cas")
+veh <- get_stats19(year = 1979, type = "veh")
 
-# Read once
-message("Reading ", src, " ...")
-cas <- read_csv(src, show_col_types = FALSE)
+# Cars in collision
+cars_in_col <- veh |>
+  filter(str_detect(vehicle_type, "(?i)Car")) |>
+  distinct(collision_index)
 
-# Filter to sample years
-cas <- cas |> filter(collision_year %in% years)
-
-# Map casualty_type codes to labels using stats19 schema
-cas_map <- stats19_schema |>
-  filter(variable == "casualty_type") |>
-  mutate(code_dbl = as.double(code))
-
-cas <- cas |>
-  left_join(cas_map |> select(code_dbl, label), by = c("casualty_type" = "code_dbl")) |>
+# 1. Overall casualties by year and mode
+cas_by_year_type <- cas |>
   mutate(type = case_when(
-    label == "Pedestrian" ~ "Pedestrian",
-    label == "Cyclist" ~ "Cyclist",
-    label %in% c("Car occupant", "Taxi/Private hire car occupant",
-                 "Car (including private hire cars) (1979-2004)",
-                 "Minibus/Motor caravan (1979-1998)") ~ "Car occupant",
+    str_detect(casualty_type, "(?i)Cyclist") ~ "Cyclist",
+    str_detect(casualty_type, "(?i)Pedestrian") ~ "Pedestrian",
+    str_detect(casualty_type, "(?i)Car") ~ "Car occupant",
     TRUE ~ "Other"
-  ))
+  )) |>
+  count(collision_year, type, name = "n")
 
-# Save aggregates
-by_year_type <- cas |> count(collision_year, type, name = "n")
-write_csv(by_year_type, "data/casualties_by_year_type.csv")
-message("Saved data/casualties_by_year_type.csv (", nrow(by_year_type), " rows, ",
-        file.size("data/casualties_by_year_type.csv"), " bytes)")
+write_csv(cas_by_year_type, "data/casualties_by_year_type.csv")
+
+# 2. Vulnerable road users hit by cars (Hurt vs Killed)
+vru_car_harm <- cas |>
+  mutate(
+    vru_mode = case_when(
+      str_detect(casualty_type, "(?i)Pedestrian") ~ "Pedestrians",
+      str_detect(casualty_type, "(?i)Cyclist") ~ "Cyclists",
+      TRUE ~ NA_character_
+    )
+  ) |>
+  filter(!is.na(vru_mode)) |>
+  inner_join(cars_in_col, by = "collision_index") |>
+  mutate(
+    outcome = if_else(casualty_severity %in% c("Fatal", "1"), "Killed", "Hurt (Injured)")
+  ) |>
+  count(collision_year, vru_mode, outcome, name = "n")
+
+write_csv(vru_car_harm, "data/vru_car_harm.csv")
+
+# 3. Car engine capacity over time in VRU collisions
+car_engine_vru <- veh |>
+  filter(str_detect(vehicle_type, "(?i)Car")) |>
+  inner_join(
+    cas |> filter(str_detect(casualty_type, "(?i)Pedestrian|Cyclist")) |> distinct(collision_index),
+    by = "collision_index"
+  ) |>
+  filter(!is.na(engine_capacity_cc), engine_capacity_cc > 0, engine_capacity_cc < 8000) |>
+  group_by(collision_year) |>
+  summarise(
+    mean_cc = mean(engine_capacity_cc, na.rm = TRUE),
+    median_cc = median(engine_capacity_cc, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+write_csv(car_engine_vru, "data/car_engine_vru.csv")
+
+# 4. Driver sex in car-VRU collisions
+driver_sex_vru <- veh |>
+  filter(str_detect(vehicle_type, "(?i)Car")) |>
+  inner_join(
+    cas |> filter(str_detect(casualty_type, "(?i)Pedestrian|Cyclist")) |> distinct(collision_index),
+    by = "collision_index"
+  ) |>
+  filter(str_detect(sex_of_driver, "(?i)Male|Female")) |>
+  count(collision_year, sex_of_driver, name = "n")
+
+write_csv(driver_sex_vru, "data/driver_sex_vru.csv")
+
+cat("Aggregated datasets built successfully in data/\n")

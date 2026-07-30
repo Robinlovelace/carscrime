@@ -14,85 +14,100 @@ Welcome to the **Cars and Crime Symposium Workshop** repository!
 ## Casualties over time
 
 ```{r}
-#| cache: true
+#| message: false
+#| warning: false
 library(stats19)
 library(tidyverse)
 library(readr)
 ```
 
 ```{r}
-#| cache: true
-# Read pre-aggregated casualty data (built from raw STATS19 by build-data.R)
-casualties_by_year_type <- read_csv("data/casualties_by_year_type.csv",
-                                    show_col_types = FALSE)
+#| message: false
+# Load pre-aggregated STATS19 dataset
+cas_by_year_type <- read_csv("data/casualties_by_year_type.csv", show_col_types = FALSE)
 ```
 
 ```{r}
 # Absolute casualties over time
-ggplot(casualties_by_year_type, aes(x = collision_year, y = n, color = type)) +
+ggplot(cas_by_year_type, aes(x = collision_year, y = n, color = type)) +
   geom_line(linewidth = 1.2) +
-  geom_point(size = 2) +
-  labs(x = "Year", y = "Number of casualties", color = "Type") +
+  geom_point(size = 1.8) +
+  scale_color_brewer(palette = "Set1") +
+  labs(
+    x = "Year", y = "Number of casualties", color = "Casualty Type",
+    title = "UK Road Casualties by Transport Mode (1979 - Present)"
+  ) +
   theme_minimal()
 ```
 
 ```{r}
 # Indexed plot (1979 = 100)
-collisions_1979 <- casualties_by_year_type |>
+cas_1979 <- cas_by_year_type |>
   filter(collision_year == 1979) |>
   select(type, n) |>
   rename(n_1979 = n)
 
-casualties_by_year_type |>
-  left_join(collisions_1979, by = "type") |>
+cas_by_year_type |>
+  left_join(cas_1979, by = "type") |>
   mutate(n_indexed = n / n_1979 * 100) |>
   ggplot(aes(x = collision_year, y = n_indexed, color = type)) +
   geom_line(linewidth = 1.2) +
-  geom_point(size = 2) +
-  labs(x = "Year", y = "Casualties indexed (1979 = 100)", color = "Type") +
+  scale_color_brewer(palette = "Set1") +
+  labs(
+    x = "Year", y = "Casualties indexed (1979 = 100)", color = "Casualty Type",
+    title = "Relative Change in Casualties Since 1979"
+  ) +
   theme_minimal()
 ```
 
 ## Car harms: How has the burden shifted?
 
-The three plots below illustrate how "car harms" have evolved differently for people **driving**, **walking**, and **cycling**.
+The plots below illustrate how "car harms" have evolved differently for people **driving**, **walking**, and **cycling**.
 
 ### Car occupant casualties — safety technology at work
 
-Car occupant casualties have fallen dramatically since 1979, driven by seatbelt laws, airbags, crumple zones, and improved vehicle design.
+Car occupant casualties have fallen dramatically since 1979, driven by seatbelt laws, airbags, crumple zones, and improved vehicle crash protection.
 
 ```{r}
-casualties_by_year_type |>
+cas_by_year_type |>
   filter(type == "Car occupant") |>
   ggplot(aes(x = collision_year, y = n)) +
   geom_line(color = "#1F78B4", linewidth = 1.2) +
   geom_point(color = "#1F78B4", size = 2) +
-  labs(x = "Year", y = "Car occupant casualties",
-       subtitle = "Dramatic decline as vehicle safety improves") +
+  labs(
+    x = "Year", y = "Car occupant casualties",
+    subtitle = "Dramatic decline as vehicle safety improves for occupants inside cars"
+  ) +
   theme_minimal()
 ```
 
-### Pedestrian casualties — harm to people walking
+### Pedestrians and Cyclists hit by cars: Hurt and Killed since 1979
 
-While car occupants have become dramatically safer, pedestrian casualties have also declined — but not nearly as steeply, and from a much higher baseline per trip.
+By joining casualty data with vehicle table records, we isolate vulnerable road users (pedestrians and cyclists) struck in collisions involving cars, tracking how many were **killed** versus **hurt (injured)** each year since 1979.
 
 ```{r}
-casualties_by_year_type |>
-  filter(type == "Pedestrian") |>
-  ggplot(aes(x = collision_year, y = n)) +
-  geom_line(color = "#E7298A", linewidth = 1.2) +
-  geom_point(color = "#E7298A", size = 2) +
-  labs(x = "Year", y = "Pedestrian casualties",
-       subtitle = "Slower progress for people outside cars") +
+#| message: false
+vru_car_harm <- read_csv("data/vru_car_harm.csv", show_col_types = FALSE)
+
+ggplot(vru_car_harm, aes(x = collision_year, y = n, color = outcome)) +
+  geom_line(linewidth = 1.2) +
+  facet_wrap(~ vru_mode, scales = "free_y") +
+  scale_color_manual(values = c("Killed" = "#D95F02", "Hurt (Injured)" = "#7570B3")) +
+  labs(
+    x = "Year", y = "Number of casualties",
+    title = "Pedestrians and Cyclists Hit by Cars (1979 - Present)",
+    subtitle = "Annual counts of vulnerable road users killed vs hurt in car collisions",
+    color = "Outcome"
+  ) +
   theme_minimal()
 ```
 
 ### Risk shift: vulnerable road user casualties per car occupant
 
-This ratio tells the story: for every car occupant casualty, how many pedestrians and cyclists are hurt? A rising ratio means the **burden of risk has shifted** from people *inside* cars to people *outside* them.
+This ratio shows for every car occupant casualty, how many pedestrians and cyclists are hurt. A rising ratio indicates that the **burden of risk has shifted** onto people *outside* cars.
 
 ```{r}
-ratio_data <- casualties_by_year_type |>
+ratio_data <- cas_by_year_type |>
   filter(type %in% c("Car occupant", "Pedestrian", "Cyclist")) |>
   pivot_wider(names_from = type, values_from = n) |>
   mutate(
@@ -102,14 +117,60 @@ ratio_data <- casualties_by_year_type |>
 
 ggplot(ratio_data, aes(x = collision_year)) +
   geom_line(aes(y = ped_per_car, color = "Pedestrians per car occupant"), linewidth = 1.2) +
-  geom_point(aes(y = ped_per_car, color = "Pedestrians per car occupant"), size = 2) +
+  geom_point(aes(y = ped_per_car, color = "Pedestrians per car occupant"), size = 1.8) +
   geom_line(aes(y = cycle_per_car, color = "Cyclists per car occupant"), linewidth = 1.2) +
-  geom_point(aes(y = cycle_per_car, color = "Cyclists per car occupant"), size = 2) +
+  geom_point(aes(y = cycle_per_car, color = "Cyclists per car occupant"), size = 1.8) +
   scale_color_manual(values = c("Pedestrians per car occupant" = "#E7298A",
                                  "Cyclists per car occupant" = "#66A61E")) +
-  labs(x = "Year", y = "Casualty ratio",
-       color = NULL,
-       subtitle = "Risk burden has shifted from car occupants to vulnerable road users") +
+  labs(
+    x = "Year", y = "Casualty ratio",
+    color = NULL,
+    subtitle = "Risk burden has shifted from car occupants to vulnerable road users"
+  ) +
+  theme_minimal()
+```
+
+## Additional Trends in Car Harms
+
+### Trend 1: Car size & engine capacity inflation (`engine_capacity_cc`) over time
+
+As cars have grown heavier, wider, and more powerful (the "SUV-ification" of passenger vehicles), average engine displacement of cars involved in collisions with pedestrians and cyclists has steadily increased.
+
+```{r}
+#| message: false
+car_engine_vru <- read_csv("data/car_engine_vru.csv", show_col_types = FALSE)
+
+ggplot(car_engine_vru, aes(x = collision_year)) +
+  geom_line(aes(y = mean_cc, color = "Mean engine capacity (cc)"), linewidth = 1.2) +
+  geom_line(aes(y = median_cc, color = "Median engine capacity (cc)"), linewidth = 1.2, linetype = "dashed") +
+  scale_color_manual(values = c("Mean engine capacity (cc)" = "#D95F02",
+                                 "Median engine capacity (cc)" = "#1B9E77")) +
+  labs(
+    x = "Year", y = "Engine capacity (cc)",
+    color = "Metric",
+    title = "Engine Capacity of Cars Involved in Vulnerable Road User Collisions",
+    subtitle = "Steady rise in engine size of cars striking pedestrians and cyclists"
+  ) +
+  theme_minimal()
+```
+
+### Trend 2: Driver Sex in Vulnerable Road User Collisions
+
+Analyzing vehicle driver attributes shows a persistent, large disparity in driver sex for cars involved in collisions striking pedestrians and cyclists.
+
+```{r}
+#| message: false
+driver_sex_vru <- read_csv("data/driver_sex_vru.csv", show_col_types = FALSE)
+
+ggplot(driver_sex_vru, aes(x = collision_year, y = n, color = sex_of_driver)) +
+  geom_line(linewidth = 1.2) +
+  scale_color_manual(values = c("Male" = "#377EB8", "Female" = "#E41A1C")) +
+  labs(
+    x = "Year", y = "Number of drivers in VRU collisions",
+    color = "Driver Sex",
+    title = "Driver Sex in Car Collisions Involving Pedestrians and Cyclists",
+    subtitle = "Male drivers account for the majority of cars involved in VRU collisions"
+  ) +
   theme_minimal()
 ```
 
