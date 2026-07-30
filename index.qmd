@@ -1,13 +1,14 @@
 ---
-title: "Reproducible project template"
+title: "Cars and Crime Symposium Workshop"
+subtitle: "Accessing and Analyzing UK Road Crash Data with stats19"
 date: last-modified
 ---
 
-A flexible template for reproducible slides with Quarto, GitHub Actions, and GitHub Pages.
+Welcome to the **Cars and Crime Symposium Workshop** repository!
 
-- Online version: [robinlovelace.github.io/reproducible-project-template](https://robinlovelace.github.io/reproducible-project-template)
-- Source code: [github.com/Robinlovelace/reproducible-project-template](https://github.com/Robinlovelace/reproducible-project-template)
+- **Online Slides:** [robinlovelace.github.io/carscrime/slides.html](https://robinlovelace.github.io/carscrime/slides.html)
+- **Source Code:** [github.com/Robinlovelace/carscrime](https://github.com/Robinlovelace/carscrime)
 
-![Deploy status](https://img.shields.io/github/actions/workflow/status/Robinlovelace/reproducible-project-template/publish.yml?branch=main&label=deploy) Last updated: {{< meta date >}}
+![Deploy status](https://img.shields.io/github/actions/workflow/status/Robinlovelace/carscrime/publish.yml?branch=main&label=deploy) Last updated: {{< meta date >}}
 
 {{< include _readme-body.md >}}
