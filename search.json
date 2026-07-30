@@ -4,7 +4,7 @@
     "href": "slides.html#workshop-overview-agenda",
     "title": "Accessing and Analyzing UK Road Crash Data with stats19",
     "section": "Workshop Overview & Agenda",
-    "text": "Workshop Overview & Agenda\nSession Duration: 60 Minutes\n\n00:00 – 00:15 | Introduction to STATS19 & {stats19}\n\nCanonical UK road crash dataset architecture (3 tables).\nPackage overview & rapid data download tour.\n\n00:15 – 00:30 | Research & Methodological Challenges\n\nDenominator neglect, aggregation scale, and inference pitfalls.\n\n00:30 – 01:00 | Interactive Breakout Groups\n\nGroup 1 (Robin): Hands-on code & vignette walkthrough (Laptops out!).\nGroup 2 (Roger): Research design & analysis ideas discussion.\nGroup 3: Informal break / walk & networking."
+    "text": "Workshop Overview & Agenda\nSession Duration: 60 Minutes\n\n00:00 – 00:15 | Introduction to STATS19 & {stats19}\n00:15 – 00:30 | Research & Methodological Challenges\n00:30 – 01:00 | Interactive Breakout Groups\n\nGroup 1 (Robin): Hands-on code & vignette walkthrough (Laptops out!).\nGroup 2 (Roger): Research design & analysis ideas discussion.\nGroup 3: Informal break / walk & networking."
   },
   {
     "objectID": "slides.html#what-is-stats19-data",
@@ -46,7 +46,7 @@
     "href": "slides.html#breakout-group-1-technical-hands-on-code",
     "title": "Accessing and Analyzing UK Road Crash Data with stats19",
     "section": "Breakout Group 1: Technical & Hands-On Code",
-    "text": "Breakout Group 1: Technical & Hands-On Code\nLed by: Robin (w/ Reka, Sam Langton)\n\nLaptops Open!\nWalkthrough of core {stats19} vignettes and spatial analysis workflows.\nCustom dataset filtering, joining crashes + casualties + vehicles.\nTroubleshooting technical questions or custom research pipelines."
+    "text": "Breakout Group 1: Technical & Hands-On Code\nLed by: Robin\n\nLaptops Open!\nWalkthrough of core {stats19} vignettes and spatial analysis workflows.\nCustom dataset filtering, joining crashes + casualties + vehicles.\nTroubleshooting technical questions or custom research pipelines."
   },
   {
     "objectID": "slides.html#breakout-group-2-research-ideas-study-design",
@@ -67,7 +67,7 @@
     "href": "slides.html#resources-links",
     "title": "Accessing and Analyzing UK Road Crash Data with stats19",
     "section": "Resources & Links",
-    "text": "Resources & Links\n\nCars and Crime Workshop Site: robinlovelace.github.io/carscrime\nSource Code Repository: github.com/Robinlovelace/carscrime\nDocumentation & Package Website: docs.ropensci.org/stats19/\nGitHub Repository: github.com/ropensci/stats19\n\nThank you for participating!"
+    "text": "Resources & Links\n\nCars and Crime Workshop Site: robinlovelace.github.io/carscrime\nSource Code Repository: github.com/Robinlovelace/carscrime\nDocumentation & Package Website: docs.ropensci.org/stats19/\nGitHub Repository: github.com/ropensci/stats19\nRoger’s slides: rogerbeecham.com and code github.com/rogerbeecham/slides\n\nThank you for participating!"
   },
   {
     "objectID": "index.html",
