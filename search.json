@@ -1,86 +1,79 @@
 [
   {
-    "objectID": "slides.html#introduction",
-    "href": "slides.html#introduction",
-    "title": "Quarto revealjs slides",
-    "section": "Introduction",
-    "text": "Introduction\nWhy use Quarto with continuous deployment?\n\nBuild slides in plain text (Markdown / .qmd files)\nRender to revealjs with a single command\nGitHub Actions automatically rebuilds and deploys on every push\nNo manual uploads — always up to date\nBuilt-in support for citations, tables, code, maths, and diagrams"
+    "objectID": "slides.html#workshop-overview-agenda",
+    "href": "slides.html#workshop-overview-agenda",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "Workshop Overview & Agenda",
+    "text": "Workshop Overview & Agenda\nSession Duration: 60 Minutes\n\n00:00 – 00:15 | Introduction to STATS19 & {stats19}\n\nCanonical UK road crash dataset architecture (3 tables).\nPackage overview & rapid data download tour.\n\n00:15 – 00:30 | Research & Methodological Challenges (TBC)\n\nContent To Be Confirmed (TBC).\n\n00:30 – 01:00 | Interactive Breakout Groups\n\nGroup 1 (Robin): Hands-on code & vignette walkthrough (Laptops out!).\nGroup 2 (Roger): Research design & analysis ideas discussion.\nGroup 3: Informal break / walk & networking."
   },
   {
-    "objectID": "slides.html#how-to-get-started",
-    "href": "slides.html#how-to-get-started",
-    "title": "Quarto revealjs slides",
-    "section": "How to get started",
-    "text": "How to get started\n\nClick Use this template on GitHub\nEnable Pages: Settings → Pages → Source: GitHub Actions\nEdit slides.qmd with your content\nPush — your slides are live in ~30 seconds\n\nThis template includes:\n\nclean-revealjs theme (bundled in _extensions/)\nSelf-contained HTML release workflow\nreferences.bib ready for citations"
+    "objectID": "slides.html#what-is-stats19-data",
+    "href": "slides.html#what-is-stats19-data",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "What is STATS19 Data?",
+    "text": "What is STATS19 Data?\n\nThe canonical record of road traffic collisions resulting in personal injury reported to police forces in Great Britain.\nHigh analytical potential for:\n\nTransport planning & active travel safety.\nCriminology & road traffic offense interactions.\nSpatial-temporal pattern analysis.\n\n\n\n\n\n\n\n\nRelational Data Structure\n\n\nSTATS19 consists of 3 interlinked tables linked by accident_index / collision_index: 1. Accidents / Crashes: Spatial location, timing, severity, weather, road conditions. 2. Casualties: Individual outcome, age, sex, mode of travel, severity. 3. Vehicles: Vehicle type, maneuvering, driver demographics."
   },
   {
-    "objectID": "slides.html#two-column-layouts",
-    "href": "slides.html#two-column-layouts",
-    "title": "Quarto revealjs slides",
-    "section": "Two-column layouts",
-    "text": "Two-column layouts\n\n\nText and bullet points on the left:\n\nFirst point\nSecond point\nEmphasised text\n\n\nA figure or code on the right:\nprint(\"Hello Quarto!\")"
+    "objectID": "slides.html#why-the-stats19-r-package",
+    "href": "slides.html#why-the-stats19-r-package",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "Why the {stats19} R Package?",
+    "text": "Why the {stats19} R Package?\nHistorical Challenges:\n\nMessy annual zip files with changing column names and codings.\nManual downloading, unzipping, cleaning, and linking across years.\n\n{stats19} Solutions:\n\nOne-line functions to download, clean, and format data.\nStandardized schemas across historical data releases.\nNative sf integration for spatial analysis.\n\nlibrary(stats19)\nlibrary(sf)\nlibrary(dplyr)"
   },
   {
-    "objectID": "slides.html#tables-with-citations",
-    "href": "slides.html#tables-with-citations",
-    "title": "Quarto revealjs slides",
-    "section": "Tables with citations",
-    "text": "Tables with citations\n\n\n\nFeature\nStatus\n\n\n\n\nAuto-deploy\n✓\n\n\nCitations\n(Peng 2011)\n\n\nExecutable code\nOptional\n\n\nSelf-contained export\n✓"
+    "objectID": "slides.html#rapid-data-retrieval",
+    "href": "slides.html#rapid-data-retrieval",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "Rapid Data Retrieval",
+    "text": "Rapid Data Retrieval\n# Download crash data for a specific year\ncrashes_2022 &lt;- get_stats19(year = 2022, type = \"crash\")\n\n# Format into spatial sf object\ncrashes_sf &lt;- format_sf(crashes_2022)\n\n# Download casualties and vehicles linked to crashes\ncasualties_2022 &lt;- get_stats19(year = 2022, type = \"casualty\")\nvehicles_2022   &lt;- get_stats19(year = 2022, type = \"vehicle\")"
   },
   {
-    "objectID": "slides.html#next-steps",
-    "href": "slides.html#next-steps",
-    "title": "Quarto revealjs slides",
-    "section": "Next steps",
-    "text": "Next steps\n\nReplace placeholder text with your content\nUpdate references.bib with your citations\nCustomise _quarto.yml for your project\nAdd your name and ORCID to the YAML header"
+    "objectID": "slides.html#part-2-content-tbc-1530-mins",
+    "href": "slides.html#part-2-content-tbc-1530-mins",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "Part 2: Content TBC (15–30 Mins)",
+    "text": "Part 2: Content TBC (15–30 Mins)\nThis section is currently To Be Confirmed (TBC)."
   },
   {
-    "objectID": "slides.html#references",
-    "href": "slides.html#references",
-    "title": "Quarto revealjs slides",
-    "section": "References",
-    "text": "References\n\n\nPeng, Roger D. 2011. “Reproducible Research in Computational Science.” Science (New York, N.y.) 334 (6060): 1226–27. https://doi.org/10.1126/science.1213847."
+    "objectID": "slides.html#breakout-group-1-technical-hands-on-code",
+    "href": "slides.html#breakout-group-1-technical-hands-on-code",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "Breakout Group 1: Technical & Hands-On Code",
+    "text": "Breakout Group 1: Technical & Hands-On Code\nLed by: Robin (w/ Reka, Sam Langton)\n\nLaptops Open!\nWalkthrough of core {stats19} vignettes and spatial analysis workflows.\nCustom dataset filtering, joining crashes + casualties + vehicles.\nTroubleshooting technical questions or custom research pipelines."
+  },
+  {
+    "objectID": "slides.html#breakout-group-2-research-ideas-study-design",
+    "href": "slides.html#breakout-group-2-research-ideas-study-design",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "Breakout Group 2: Research Ideas & Study Design",
+    "text": "Breakout Group 2: Research Ideas & Study Design\nLed by: Roger\n\nConceptual & Strategic Discussion\nBrainstorming candidate research questions connecting road safety, crime, and transport planning.\nDiscussion on data requirements, external denominators, and study design.\nExploring potential collaboration and grant/paper proposals."
+  },
+  {
+    "objectID": "slides.html#breakout-group-3-walk-informal-networking",
+    "href": "slides.html#breakout-group-3-walk-informal-networking",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "Breakout Group 3: Walk & Informal Networking",
+    "text": "Breakout Group 3: Walk & Informal Networking\n\nRefresh & Recharge\nTake an early lunch / outdoor walk.\nInformal discussions with colleagues."
+  },
+  {
+    "objectID": "slides.html#resources-links",
+    "href": "slides.html#resources-links",
+    "title": "Accessing and Analyzing UK Road Crash Data with stats19",
+    "section": "Resources & Links",
+    "text": "Resources & Links\n\nCars and Crime Repository: github.com/Robinlovelace/carscrime\nDocumentation & Package Website: docs.ropensci.org/stats19/\nGitHub Repository: github.com/ropensci/stats19\n\nThank you for participating!"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Reproducible project template",
+    "title": "Cars and Crime Symposium Workshop",
     "section": "",
-    "text": "A flexible template for reproducible slides with Quarto, GitHub Actions, and GitHub Pages.\nLast updated: July 30, 2026"
+    "text": "Welcome to the Cars and Crime Symposium Workshop repository!\nLast updated: July 30, 2026"
   },
   {
-    "objectID": "index.html#quick-start",
-    "href": "index.html#quick-start",
-    "title": "Reproducible project template",
-    "section": "Quick start",
-    "text": "Quick start\n(Note: The commands below use the GitHub CLI (gh). If you don’t have it installed, you can follow the installation instructions or create the repository manually on GitHub).\ngh repo create my-slides --template robinlovelace/reproducible-project-template\ncd my-slides\n# Enable Pages: Settings → Pages → Source: Deploy from a branch → Branch: gh-pages, / (root)\n# Edit slides.qmd, then push\ngit push\nYour slides are live in ~30 seconds."
-  },
-  {
-    "objectID": "index.html#features",
-    "href": "index.html#features",
-    "title": "Reproducible project template",
-    "section": "Features",
-    "text": "Features\n\n\n\n\n\n\n\nFeature\nDescription\n\n\n\n\nclean-revealjs theme\nBundled in _extensions/, zero install needed\n\n\nAuto-deploy\nactions/deploy-pages@v4 on every push to main\n\n\nAuto-detect\nUses quarto inspect to detect R/Python needs; only installs what’s required\n\n\nPR previews\nDeploy preview versions for review before merging\n\n\nQuarto freeze\nCache computation results locally; CI only re-renders markdown\n\n\nSelf-contained HTML\nOffline-capable HTML with all images, CSS, and JS embedded\n\n\nPDF export\nAuto-generated via DeckTape on every release\n\n\nDate-based releases\nAutomatic versioned releases on every push\n\n\nCitation support\nreferences.bib ready for bibliographies"
-  },
-  {
-    "objectID": "index.html#workflows",
-    "href": "index.html#workflows",
-    "title": "Reproducible project template",
-    "section": "Workflows",
-    "text": "Workflows\n\n\n\n\n\n\n\n\nWorkflow\nTrigger\nWhat it does\n\n\n\n\npublish.yml\nPush to main\nRender site → deploy to GitHub Pages\n\n\nrelease-standalone.yml\nPush to main\nBuild self-contained HTML + PDF → create dated release\n\n\npr-preview.yml\nPR to main\nBuild preview → deploy to temporary URL"
-  },
-  {
-    "objectID": "index.html#structure",
-    "href": "index.html#structure",
-    "title": "Reproducible project template",
-    "section": "Structure",
-    "text": "Structure\n├── slides.qmd                  # Main slide deck\n├── index.qmd                   # Landing page\n├── _quarto.yml                 # Project config (output-dir, freeze, navbar)\n├── references.bib              # Bibliography\n├── _extensions/clean/          # clean-revealjs theme (bundled)\n└── .github/workflows/\n    ├── publish.yml             # Render + deploy to Pages\n    ├── release-standalone.yml  # Self-contained HTML + PDF release\n    └── pr-preview.yml          # PR preview deployments"
-  },
-  {
-    "objectID": "index.html#built-with-this-template",
-    "href": "index.html#built-with-this-template",
-    "title": "Reproducible project template",
-    "section": "Built with this template",
-    "text": "Built with this template\n\nAUM 2026 slides — Modelling multi-model traffic, casualties and risk\nITF Workshop slides — Building communities of transport practitioners"
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "Cars and Crime Symposium Workshop",
+    "section": "Overview",
+    "text": "Overview\nThis repository contains reproducible slides and materials for the Cars and Crime Symposium Workshop on accessing and analyzing UK road safety data using the {stats19} R package.\n\nWorkshop Agenda (60 Mins)\n\n00:00 – 00:15: Introduction to STATS19 & {stats19} R package (3 core tables architecture).\n00:15 – 00:30: Research Topics & Methodological Challenges (TBC).\n00:30 – 01:00: Breakout Workshop Groups:\n\nGroup 1 (Robin): Hands-on code & vignette walkthrough.\nGroup 2 (Roger): Research design & analysis plans.\nGroup 3: Informal walk & networking.\n\n\n\n\nGetting Started\nYou can launch an interactive R development environment directly in your browser:\n\n\n\nOpen in GitHub Codespaces"
   }
 ]

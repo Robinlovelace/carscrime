@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-07-30">
 
-<title>Reproducible project template</title>
+<title>Cars and Crime Symposium Workshop</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,41 +26,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -150,7 +115,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Reproducible project template</h1>
+<h1 class="title">Cars and Crime Symposium Workshop</h1>
+<p class="subtitle lead">Accessing and Analyzing UK Road Crash Data with stats19</p>
 </div>
 
 
@@ -173,129 +139,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>A flexible template for reproducible slides with Quarto, GitHub Actions, and GitHub Pages.</p>
+<p>Welcome to the <strong>Cars and Crime Symposium Workshop</strong> repository!</p>
 <ul>
-<li>Online version: <a href="https://robinlovelace.github.io/reproducible-project-template">robinlovelace.github.io/reproducible-project-template</a></li>
-<li>Source code: <a href="https://github.com/Robinlovelace/reproducible-project-template">github.com/Robinlovelace/reproducible-project-template</a></li>
+<li><strong>Online Slides:</strong> <a href="https://robinlovelace.github.io/carscrime/slides.html">robinlovelace.github.io/carscrime/slides.html</a></li>
+<li><strong>Source Code:</strong> <a href="https://github.com/Robinlovelace/carscrime">github.com/Robinlovelace/carscrime</a></li>
 </ul>
-<p><img src="https://img.shields.io/github/actions/workflow/status/Robinlovelace/reproducible-project-template/publish.yml?branch=main&amp;label=deploy" class="img-fluid" alt="Deploy status"> Last updated: July 30, 2026</p>
-<section id="quick-start" class="level2">
-<h2 class="anchored" data-anchor-id="quick-start">Quick start</h2>
-<p><em>(Note: The commands below use the <a href="https://cli.github.com/">GitHub CLI (<code>gh</code>)</a>. If you don’t have it installed, you can <a href="https://cli.github.com/">follow the installation instructions</a> or create the repository manually on GitHub).</em></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> repo create my-slides <span class="at">--template</span> robinlovelace/reproducible-project-template</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-slides</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Enable Pages: Settings → Pages → Source: Deploy from a branch → Branch: gh-pages, / (root)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Edit slides.qmd, then push</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Your slides are live in ~30 seconds.</p>
-</section>
-<section id="features" class="level2">
-<h2 class="anchored" data-anchor-id="features">Features</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 40%">
-<col style="width: 59%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Feature</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>clean-revealjs theme</strong></td>
-<td>Bundled in <code>_extensions/</code>, zero install needed</td>
-</tr>
-<tr class="even">
-<td><strong>Auto-deploy</strong></td>
-<td><code>actions/deploy-pages@v4</code> on every push to main</td>
-</tr>
-<tr class="odd">
-<td><strong>Auto-detect</strong></td>
-<td>Uses <code>quarto inspect</code> to detect R/Python needs; only installs what’s required</td>
-</tr>
-<tr class="even">
-<td><strong>PR previews</strong></td>
-<td>Deploy preview versions for review before merging</td>
-</tr>
-<tr class="odd">
-<td><strong>Quarto freeze</strong></td>
-<td>Cache computation results locally; CI only re-renders markdown</td>
-</tr>
-<tr class="even">
-<td><strong>Self-contained HTML</strong></td>
-<td>Offline-capable HTML with all images, CSS, and JS embedded</td>
-</tr>
-<tr class="odd">
-<td><strong>PDF export</strong></td>
-<td>Auto-generated via DeckTape on every release</td>
-</tr>
-<tr class="even">
-<td><strong>Date-based releases</strong></td>
-<td>Automatic versioned releases on every push</td>
-</tr>
-<tr class="odd">
-<td><strong>Citation support</strong></td>
-<td><code>references.bib</code> ready for bibliographies</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="workflows" class="level2">
-<h2 class="anchored" data-anchor-id="workflows">Workflows</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 30%">
-<col style="width: 27%">
-<col style="width: 42%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Workflow</th>
-<th>Trigger</th>
-<th>What it does</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>publish.yml</code></td>
-<td>Push to main</td>
-<td>Render site → deploy to GitHub Pages</td>
-</tr>
-<tr class="even">
-<td><code>release-standalone.yml</code></td>
-<td>Push to main</td>
-<td>Build self-contained HTML + PDF → create dated release</td>
-</tr>
-<tr class="odd">
-<td><code>pr-preview.yml</code></td>
-<td>PR to main</td>
-<td>Build preview → deploy to temporary URL</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="structure" class="level2">
-<h2 class="anchored" data-anchor-id="structure">Structure</h2>
-<pre><code>├── slides.qmd                  # Main slide deck
-├── index.qmd                   # Landing page
-├── _quarto.yml                 # Project config (output-dir, freeze, navbar)
-├── references.bib              # Bibliography
-├── _extensions/clean/          # clean-revealjs theme (bundled)
-└── .github/workflows/
-    ├── publish.yml             # Render + deploy to Pages
-    ├── release-standalone.yml  # Self-contained HTML + PDF release
-    └── pr-preview.yml          # PR preview deployments</code></pre>
-</section>
-<section id="built-with-this-template" class="level2">
-<h2 class="anchored" data-anchor-id="built-with-this-template">Built with this template</h2>
+<p><img src="https://img.shields.io/github/actions/workflow/status/Robinlovelace/carscrime/publish.yml?branch=main&amp;label=deploy" class="img-fluid" alt="Deploy status"> Last updated: July 30, 2026</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This repository contains reproducible slides and materials for the <strong>Cars and Crime Symposium Workshop</strong> on accessing and analyzing UK road safety data using the <code>{stats19}</code> R package.</p>
+<section id="workshop-agenda-60-mins" class="level3">
+<h3 class="anchored" data-anchor-id="workshop-agenda-60-mins">Workshop Agenda (60 Mins)</h3>
 <ul>
-<li><a href="https://robinlovelace.net/aum26/">AUM 2026 slides</a> — Modelling multi-model traffic, casualties and risk</li>
-<li><a href="https://robinlovelace.net/itfworkshop/">ITF Workshop slides</a> — Building communities of transport practitioners</li>
+<li><strong>00:00 – 00:15</strong>: Introduction to STATS19 &amp; <code>{stats19}</code> R package (3 core tables architecture).</li>
+<li><strong>00:15 – 00:30</strong>: Research Topics &amp; Methodological Challenges (TBC).</li>
+<li><strong>00:30 – 01:00</strong>: Breakout Workshop Groups:
+<ul>
+<li><strong>Group 1 (Robin)</strong>: Hands-on code &amp; vignette walkthrough.</li>
+<li><strong>Group 2 (Roger)</strong>: Research design &amp; analysis plans.</li>
+<li><strong>Group 3</strong>: Informal walk &amp; networking.</li>
+</ul></li>
 </ul>
+</section>
+<section id="getting-started" class="level3">
+<h3 class="anchored" data-anchor-id="getting-started">Getting Started</h3>
+<p>You can launch an interactive R development environment directly in your browser:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://github.com/codespaces/new/Robinlovelace/carscrime?quickstart=1"><img src="https://img.shields.io/badge/Open%20in-GitHub%20Codespaces-blue?logo=github.png" class="img-fluid figure-img"></a></p>
+<figcaption>Open in GitHub Codespaces</figcaption>
+</figure>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
