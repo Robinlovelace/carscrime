@@ -45,4 +45,22 @@ ggplot() +
   theme_minimal()
 ```
 
+Same plot starting with index of 100 starting in 1979:
+
+```{r}
+collisions_1979 = casualties_per_year_type |>
+  filter(collision_year == 1979) |>
+  select(type, n) |>
+  rename(n_1979 = n)
+casualties_per_year_type_indexed = casualties_per_year_type |>
+  left_join(collisions_1979, by = "type") |>
+  mutate(n_indexed = n / n_1979 * 100,
+         collision_year_indexed = collision_year - 1979 + 1)
+
+ggplot() +
+  geom_line(data = casualties_per_year_type_indexed, aes(x = collision_year_indexed, y = n_indexed, color = type)) +
+  labs(x = "Year (indexed from 100 in 1979)", y = "Number of casualties (indexed)", color = "Type") +
+  theme_minimal()
+```
+
 {{< include _readme-body.md >}}
