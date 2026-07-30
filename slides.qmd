@@ -95,9 +95,15 @@ vehicles_2022   <- get_stats19(year = 2022, type = "vehicle")
 
 ---
 
-## Part 2: Content TBC (15–30 Mins)
+## Part 2: Tools in Action — criticalissues
 
-This section is currently To Be Confirmed (TBC).
+A complementary tool for exploring road safety data at high spatial resolution:
+
+![criticalissues.netlify.app — WYCA region with SA01 (signal) layer](images/criticalissues-demo.png)
+
+- **Critical Issues** ([criticalissues.netlify.app](https://criticalissues.netlify.app)) combines STATS19 crash data with network infrastructure to identify locations needing intervention.
+- Explore how spatial layers (signals, crossings, widths) relate to casualty clusters.
+- Discuss where the STATS19 *classification* matched your *intuition*.
 
 <!--
 ## Challenge 1: Denominator Neglect
